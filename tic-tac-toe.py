@@ -202,8 +202,8 @@ playHuman = True
 trainCycles = 200000
 trainEpsilon=0.9
 
-if (os.path.exists("ai.data")):
-    p1, p2 = pickle.load(open("ai.data", "rb"))
+if (os.path.exists("Qlearners.data")):
+    p1, p2 = pickle.load(open("Qlearners.data", "rb"))
 else:
     p1 = QLearningPlayer('X')
     p2 = QLearningPlayer('O')
@@ -218,7 +218,7 @@ if training:
             p1.epsilon=trainEpsilon*(1-i/trainCycles)
         t=TicTacToe(p1,p2)
         t.play()
-    pickle.dump((p1,p2), open("ai.data", "wb" ))
+    pickle.dump((p1,p2), open("Qlearners.data", "wb" ))
     print("\nTraining Done")
 
 if playHuman:
